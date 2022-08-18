@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import Header from './components/Header';
 import Busca from './components/Busca';
+import Footer from './components/Footer';
 
 export default function App() {
   return (
@@ -10,9 +11,7 @@ export default function App() {
 
       <Busca />
 
-      <View style={styles.footer}>
-        <Text>App de Clima</Text>
-      </View>
+      <Footer />
     </View>
   );
 }
