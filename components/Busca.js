@@ -6,12 +6,15 @@ import Api from './Api';
 
 export default function(){
     const [clima, setClima] = useState(0);
+    const [clima2, setClima2] = useState(0);
     const [inputCity, setInputCity] = useState(0);
         
     async function carregaCity(){
-        const response = await Api.get('&city_name='+inputCity);
+        const response = await Api.get('weather?array_limit=1&fields=only_results,temp,city_name,forecast,max,min,description,date&key=1ee4375a&city_name='+inputCity);
         
-        setClima(response.data);
+        setClima(response.data.forecast[0]);
+        setClima2(response.data);
+
     };
 
     return (
@@ -34,7 +37,7 @@ export default function(){
                 </TouchableOpacity>
             </View>
 
-            <Tempo data={clima}/>
+            <Tempo data={clima} data2={clima2}/>
         </>
     );
 }

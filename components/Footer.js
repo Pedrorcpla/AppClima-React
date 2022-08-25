@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, Dimensions } from 'react-native';
 export default function(){
     return (
         <View style={styles.footer}>
-            <Text style={styles.textosterona}>App feito por Pedro Nascimento</Text>
+            <Text style={styles.textosterona}>App feito por Pedro Tavares</Text>
         </View>
     );
 }
