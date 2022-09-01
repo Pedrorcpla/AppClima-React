@@ -1,18 +1,20 @@
-import { StyleSheet, Text, View, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, ScrollView } from 'react-native';
 import Header from './components/Header';
 import Busca from './components/Busca';
 import Footer from './components/Footer';
 
 export default function App() {
   return (
-    <View style={styles.container}>
+    <ScrollView>
+      <View style={styles.container}>
 
-      <Header />
+        <Header />
 
-      <Busca />
+        <Busca />
 
-      <Footer />
-    </View>
+        <Footer />
+      </View>
+    </ScrollView>
   );
 }
 
@@ -22,9 +24,10 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'space-between',
     alignItems: 'center',
+
     backgroundColor: 'lightgrey',
     width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height,
+    minHeight: Dimensions.get('window').height,
   },
   
 });

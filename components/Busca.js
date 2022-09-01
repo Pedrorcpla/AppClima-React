@@ -7,13 +7,15 @@ import Api from './Api';
 export default function(){
     const [clima, setClima] = useState(0);
     const [clima2, setClima2] = useState(0);
+    const [clima3, setClima3] = useState(0);
     const [inputCity, setInputCity] = useState(0);
         
     async function carregaCity(){
-        const response = await Api.get('weather?array_limit=1&fields=only_results,temp,city_name,forecast,max,min,description,date&key=1ee4375a&city_name='+inputCity);
+        const response = await Api.get('weather?array_limit=2&fields=only_results,temp,city_name,date,time,forecast,max,min,description,date&key=6ea13ae3&city_name='+inputCity);
         
         setClima(response.data.forecast[0]);
         setClima2(response.data);
+        setClima3(response.data.forecast[1]);
 
     };
 
@@ -37,7 +39,7 @@ export default function(){
                 </TouchableOpacity>
             </View>
 
-            <Tempo data={clima} data2={clima2}/>
+            <Tempo data={clima} data2={clima2} data3={clima3}/>
         </>
     );
 }
@@ -50,7 +52,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     
         width: '90%',
-        height: '15%',
+        height: '10%',
         borderRadius: 50,
     
         backgroundColor: '#fff',
