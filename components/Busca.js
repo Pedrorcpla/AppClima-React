@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, FlatList } from 'react-native';
 import Icon from 'react-native-vector-icons/Entypo';
 import Tempo from './Tempo';
 import Api from './Api';
@@ -13,9 +13,9 @@ export default function(){
     async function carregaCity(){
         const response = await Api.get('weather?array_limit=2&fields=only_results,temp,city_name,date,time,forecast,max,min,description,date&key=6ea13ae3&city_name='+inputCity);
         
-        setClima(response.data.forecast[0]);
+        setClima(response.data.forecast);
         setClima2(response.data);
-        setClima3(response.data.forecast[1]);
+        setClima3(response.data.forecast);
 
     };
 
@@ -39,7 +39,22 @@ export default function(){
                 </TouchableOpacity>
             </View>
 
-            <Tempo data={clima} data2={clima2} data3={clima3}/>
+            {/* 
+                <Tempo data={clima} data2={clima2} data3={clima3}/>
+            */}
+            <FlatList 
+                data={clima}
+                renderItem={({item})=>{
+                    return(
+                        <View>
+                            <Text>Data: {item.date}</Text>
+                            <Text>Max: {item.max}</Text>
+                            <Text>Min: {item.min}</Text>
+                            <Text>Descrição: {item.description}</Text>
+                        </View>
+                    );
+                }}
+            />
         </>
     );
 }
